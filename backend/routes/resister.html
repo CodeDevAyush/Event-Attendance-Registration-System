@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    form { margin-bottom: 20px; }
+    input { display: block; margin: 10px 0; padding: 8px; width: 250px; }
+    button { padding: 10px 20px; background: #2563EB; color: #fff; border: none; cursor: pointer; }
+    img { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h2>Event Registration</h2>
+  <form id="registerForm">
+    <input type="text" id="name" placeholder="Enter your name" required />
+    <input type="email" id="email" placeholder="Enter your email" required />
+    <button type="submit">Register</button>
+  </form>
+  
+  <div id="result"></div>
+
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+
+      const res = await fetch("http://localhost:5000/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email })
+      });
+
+      const data = await res.json();
+
+      if (data.error) {
+        alert(data.error);
+      } else {
+        document.getElementById("result").innerHTML = `
+          <p>✅ Registered Successfully!</p>
+          <p><b>Reg ID:</b> ${data.regId}</p>
+          <img src="${data.qrCode}" alt="QR Code"/>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>

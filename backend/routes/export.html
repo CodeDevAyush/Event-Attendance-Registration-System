@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Export Attendance</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    button { padding: 10px 20px; background: #16A34A; color: #fff; border: none; cursor: pointer; }
+    table { border-collapse: collapse; margin-top: 20px; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+  </style>
+</head>
+<body>
+  <h2>Admin Dashboard</h2>
+  <button id="exportBtn">📥 Export Attendance</button>
+
+  <table id="registrationsTable">
+    <thead>
+      <tr>
+        <th>Reg ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Attendance</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    // Load all registrations
+    async function loadRegistrations() {
+      const res = await fetch("http://localhost:5000/api/registrations");
+      const data = await res.json();
+
+      const tbody = document.querySelector("#registrationsTable tbody");
+      tbody.innerHTML = "";
+      data.forEach(r => {
+        tbody.innerHTML += `
+          <tr>
+            <td>${r.regId}</td>
+            <td>${r.name}</td>
+            <td>${r.email}</td>
+            <td>${r.attended ? "✅ Present" : "❌ Absent"}</td>
+            <td>${r.createdAt}</td>
+          </tr>
+        `;
+      });
+    }
+
+    loadRegistrations();
+
+    // Export Attendance
+    document.getElementById("exportBtn").addEventListener("click", () => {
+      window.location.href = "http://localhost:5000/api/export";
+    });
+  </script>
+</body>
+</html>

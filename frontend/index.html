@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="info-panel">
+            <h1>Tech Summit 2024</h1>
+            <p>Join us for an electrifying day of innovation, networking, and expert-led workshops. Connect with industry leaders and fellow tech enthusiasts.</p>
+            
+            <div class="event-details">
+                <p><strong>Date:</strong> December 15, 2024</p>
+                <p><strong>Time:</strong> 9:00 AM - 6:00 PM</p>
+                <p><strong>Venue:</strong> Convention Center, Downtown Tech Hub</p>
+            </div>
+
+            <div class="what-to-expect">
+                <h3>What to Expect</h3>
+                <ul>
+                    <li>Keynote Speeches</li>
+                    <li>Hands-on Workshops</li>
+                    <li>Networking Sessions</li>
+                    <li>Project Showcases</li>
+                    <li>Job Opportunities</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="registration-card">
+            <h2>Register Now</h2>
+            <p>Fill out the form below to secure your spot at the summit!</p>
+
+            <form id="registerForm">
+                <input type="text" id="name" placeholder="Full Name" required>
+                <input type="email" id="email" placeholder="Email Address" required>
+                <input type="text" id="roll" placeholder="Registration ID (e.g., RA1234567890)" required>
+                <button type="submit">Submit Registration</button>
+            </form>
+
+            <div id="message" class="message"></div>
+
+            <div class="links">
+                <a href="/admin">Admin Dashboard</a>
+                <a href="/scanner">QR Scanner</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

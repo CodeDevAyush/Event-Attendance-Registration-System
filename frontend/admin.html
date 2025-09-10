@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Admin Panel</h2>
+                <small>Event Management</small>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item active">
+                        <a href="/admin">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Overview
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">
+                            <i class="fas fa-users"></i>
+                            Attendees
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/scanner">
+                            <i class="fas fa-qrcode"></i>
+                            QR Scanner
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">
+                            <i class="fas fa-chart-line"></i>
+                            Analytics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <a href="/" class="back-to-reg-btn">
+                <i class="fas fa-arrow-left"></i>
+                Back to Registration
+            </a>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="main-header-content">
+                    <h1>Tech Summit 2024</h1>
+                    <small>Event Management Dashboard</small>
+                </div>
+                <div class="live-indicator">Live Event</div>
+            </header>
+
+            <section class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <h3>Total Registrations</h3>
+                    </div>
+                    <div class="stat-body">
+                        <span class="stat-value" id="totalRegistrants">0</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <h3>Total Attendance</h3>
+                    </div>
+                    <div class="stat-body">
+                        <span class="stat-value" id="totalAttendees">0</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <h3>Attendance Rate</h3>
+                    </div>
+                    <div class="stat-body">
+                        <span class="stat-value" id="attendanceRate">0%</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <h3>Unregistered Check-ins</h3>
+                    </div>
+                    <div class="stat-body">
+                        <span class="stat-value" id="recentCheckins">0</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="attendees-management">
+                <div class="section-header">
+                    <h2>Attendees Management</h2>
+                    <button id="downloadBtn" class="export-btn">
+                        <i class="fas fa-file-excel"></i> Export to Excel
+                    </button>
+                </div>
+
+                <div class="filter-controls">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search attendees...">
+                    </div>
+                    <select id="statusFilter">
+                        <option value="all">All Status</option>
+                        <option value="attended">Attended</option>
+                        <option value="registered">Registered</option>
+                    </select>
+                </div>
+                
+                <div class="table-container">
+                    <table id="attendeesTable">
+                        <thead>
+                            <tr>
+                                <th>Reg ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Registration</th>
+                                <th>Check-in</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="attendeesList">
+                            <tr><td colspan="7">Loading data...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

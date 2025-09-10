@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Alice Johnson",
+    "email": "alice@example.com",
+    "roll": "RA1001",
+    "attended": 1
+  },
+  {
+    "id": 2,
+    "name": "Bob Williams",
+    "email": "bob@example.com",
+    "roll": "RA1002",
+    "attended": 0
+  },
+  {
+    "id": 3,
+    "name": "Charlie Davis",
+    "email": "charlie@example.com",
+    "roll": "RA1003",
+    "attended": 1
+  },
+  {
+    "id": 4,
+    "name": "Diana Miller",
+    "email": "diana@example.com",
+    "roll": "RA1004",
+    "attended": 0
+  }
+]

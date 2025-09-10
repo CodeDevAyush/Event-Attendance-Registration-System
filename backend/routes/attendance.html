@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Attendance Scanner</title>
+  <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    #reader { width: 300px; margin: auto; }
+    #status { margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>Attendance Scanner</h2>
+  <div id="reader"></div>
+  <p id="status">Waiting for scan...</p>
+
+  <script>
+    function onScanSuccess(decodedText) {
+      fetch("http://localhost:5000/api/attendance", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ regId: decodedText })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          document.getElementById("status").innerText = `✅ Attendance marked for ${decodedText}`;
+        } else {
+          document.getElementById("status").innerText = `❌ ${data.error}`;
+        }
+      });
+    }
+
+    const html5QrCode = new Html5Qrcode("reader");
+    html5QrCode.start(
+      { facingMode: "environment" }, // rear camera
+      { fps: 10, qrbox: 250 },
+      onScanSuccess
+    );
+  </script>
+</body>
+</html>
