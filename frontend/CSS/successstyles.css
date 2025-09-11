@@ -1,0 +1,183 @@
+        :root {
+            --primary-color: #28a745;
+            --secondary-color: #007bff;
+            --background-color: #f0f2f5;
+            --card-background: #ffffff;
+            --border-color: #e0e0e0;
+            --text-color: #444;
+            --light-text-color: #6c757d;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: var(--card-background);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px 20px;
+            border-radius: 12px 12px 0 0;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .header p {
+            margin: 5px 0 0;
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .header .checkmark {
+            font-size: 3em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .card {
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin: 0 20px 20px;
+            padding: 25px;
+            text-align: left;
+        }
+
+        .card h2 {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--text-color);
+            margin: 0 0 15px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .detail-label {
+            color: var(--light-text-color);
+            font-weight: 500;
+        }
+
+        .detail-value {
+            font-weight: 600;
+            color: var(--text-color);
+            text-align: right;
+        }
+
+        .qr-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .qr-section p {
+            color: var(--light-text-color);
+            font-size: 0.9em;
+            margin-top: -10px;
+        }
+
+        #qrCodeImage {
+            width: 200px;
+            height: 200px;
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s, transform 0.2s;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .download-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+        }
+
+        .download-btn:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        .test-scanner-btn {
+            background-color: transparent;
+            color: var(--secondary-color);
+            border: 1px solid var(--secondary-color);
+        }
+
+        .test-scanner-btn:hover {
+            background-color: rgba(0, 123, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .event-info {
+            padding: 20px;
+            margin: 0 20px 20px;
+            border-top: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .event-info p {
+            margin: 5px 0;
+            color: var(--text-color);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-link:hover {
+            text-decoration: underline;
+        }

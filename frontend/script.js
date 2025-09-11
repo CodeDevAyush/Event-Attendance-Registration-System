@@ -51,11 +51,15 @@ const startScanBtn = document.getElementById("start-scan-btn");
 if (startScanBtn) {
     const qrScanner = new Html5Qrcode("reader");
     const messageEl = document.getElementById("message");
+    const userDetailsSection = document.getElementById("scannedUserDetails");
+    const userNameEl = document.getElementById("scannedUserName");
+    const userEmailEl = document.getElementById("scannedUserEmail");
+    const userRollEl = document.getElementById("scannedUserRoll");
 
     function onScanSuccess(decodedText, decodedResult) {
         qrScanner.stop().then(() => {
             console.log(`QR code scanned: ${decodedText}`);
-            markAttendance(decodedText);
+            markAttendanceAndShowDetails(decodedText);
         }).catch(err => {
             console.error(`Failed to stop scanning: ${err}`);
         });
@@ -81,19 +85,34 @@ if (startScanBtn) {
             });
     });
 
-    // Function to send data to the backend
-    async function markAttendance(qrData) {
+    // Function to handle both attendance marking and detail display
+    async function markAttendanceAndShowDetails(qrData) {
         try {
-            const res = await fetch("/attendance", {
+            // Parse the JSON string from the QR code
+            const scannedData = JSON.parse(qrData);
+            const userId = scannedData.id;
+
+            // First, try to mark attendance
+            const attendanceRes = await fetch("/attendance", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ qrData })
+                body: JSON.stringify({ qrData: userId })
             });
-            const data = await res.json();
+            const attendanceData = await attendanceRes.json();
             
-            messageEl.textContent = data.message;
-            messageEl.style.color = data.success ? "var(--success-color)" : "var(--error-color)";
+            messageEl.textContent = attendanceData.message;
+            messageEl.style.color = attendanceData.success ? "var(--success-color)" : "var(--error-color)";
             
+            // Now, display user details from the parsed JSON
+            if (scannedData) {
+                userNameEl.textContent = scannedData.name;
+                userEmailEl.textContent = scannedData.email;
+                userRollEl.textContent = scannedData.roll;
+                userDetailsSection.style.display = 'block'; // Show the details
+            } else {
+                userDetailsSection.style.display = 'none'; // Hide if user not found
+            }
+
             setTimeout(() => {
                 startScanBtn.style.display = "block";
             }, 2000);
@@ -102,6 +121,7 @@ if (startScanBtn) {
             messageEl.style.color = "var(--error-color)";
             console.error(err);
             startScanBtn.style.display = "block";
+            userDetailsSection.style.display = 'none';
         }
     }
 }

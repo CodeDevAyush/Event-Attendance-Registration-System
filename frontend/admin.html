@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="styles2.css">
+    <link rel="stylesheet" href="CSS/adminstyles.css">
 </head>
 <body>
 
@@ -24,27 +24,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#">
-                            <i class="fas fa-users"></i>
-                            Attendees
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a href="/scanner">
                             <i class="fas fa-qrcode"></i>
                             QR Scanner
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">
-                            <i class="fas fa-chart-line"></i>
-                            Analytics
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">
-                            <i class="fas fa-cog"></i>
-                            Settings
                         </a>
                     </li>
                 </ul>
@@ -120,20 +102,18 @@
                 </div>
                 
                 <div class="table-container">
-                    <table id="attendeesTable">
+                    <table id="adminTable">
                         <thead>
                             <tr>
-                                <th>Reg ID</th>
+                                <th>ID</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Roll</th>
                                 <th>Status</th>
-                                <th>Registration</th>
-                                <th>Check-in</th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody id="attendeesList">
-                            <tr><td colspan="7">Loading data...</td></tr>
+                            <tr><td colspan="5">Loading data...</td></tr>
                         </tbody>
                     </table>
                 </div>
